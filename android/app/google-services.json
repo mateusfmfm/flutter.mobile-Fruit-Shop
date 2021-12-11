@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861039829003",
+    "project_id": "fruitshop-4d5c8",
+    "storage_bucket": "fruitshop-4d5c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861039829003:android:636734329e7cf11d44e70e",
+        "android_client_info": {
+          "package_name": "com.cubix.fruitshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861039829003-qa8ok2kj62jhvoomaqr5usli0e25qiek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNzthgBxcHNnkSnxtatAgI-c3LRxN7DkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861039829003-qa8ok2kj62jhvoomaqr5usli0e25qiek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
