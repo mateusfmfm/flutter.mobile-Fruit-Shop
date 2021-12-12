@@ -1,5 +1,6 @@
 import 'package:fruitshop/modules/home/home_page.dart';
 import 'package:fruitshop/modules/login/login_page.dart';
+import 'package:fruitshop/modules/product/product_page.dart';
 import 'package:get/get.dart';
 part './app_routes.dart';
 
@@ -15,5 +16,11 @@ class AppPages {
       name: RoutesHome.HOME,
       page: () => HomePage(),
     ),
+
+    //PRODUCT
+    GetPage(
+      name: RoutesProduct.PRODUCT_LIST,
+      page: () => ProductPage(),
+    )
   ];
 }

@@ -7,3 +7,7 @@ class Routes {
 class RoutesHome {
   static const HOME = '/home';
 }
+
+class RoutesProduct {
+  static const PRODUCT_LIST = '/productList';
+}
