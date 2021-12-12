@@ -11,6 +11,7 @@ class ProductModel{
    String? name;
    int? price;
    int? counter = 0;
+   int? finalValue;
 
   ProductModel({this.imageUrl, this.description, this.name, this.price});
 

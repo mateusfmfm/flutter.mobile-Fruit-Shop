@@ -106,6 +106,8 @@ class _ProductPageState extends State<ProductPage> {
                                     setState(() {
                                       product.counter = product.counter! - 1;
                                     });
+                                    product.finalValue =
+                                        product.counter! * product.price!;
                                   },
                           ),
                           Padding(
@@ -121,6 +123,8 @@ class _ProductPageState extends State<ProductPage> {
                               setState(() {
                                 product.counter = product.counter! + 1;
                               });
+                              product.finalValue =
+                                  product.counter! * product.price!;
                             },
                           )
                         ],
