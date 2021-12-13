@@ -11,3 +11,11 @@ class RoutesHome {
 class RoutesProduct {
   static const PRODUCT_LIST = '/productList';
 }
+
+class RoutesCart { 
+  static const CART = '/cart';
+}
+
+class RoutesOrder {
+  static const ORDER_RESUM = '/orderResum';
+}

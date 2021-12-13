@@ -4,6 +4,7 @@ import 'package:fruitshop/data/models/product_model.dart';
 import 'package:fruitshop/modules/product/product_controller.dart';
 import 'package:fruitshop/modules/widgets/buttons/button_primary.dart';
 import 'package:fruitshop/modules/widgets/scaffolds/regular_scaffold.dart';
+import 'package:fruitshop/modules/widgets/text_fields/text_field_search.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,6 @@ class _ProductPageState extends State<ProductPage> {
   ProductController productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
-    ProductModel? product;
     return GetX<ProductController>(
       builder: (_controller) => RegularScaffold(
         showBackButton: false,
@@ -37,6 +37,13 @@ class _ProductPageState extends State<ProductPage> {
               )
             : Column(
                 children: [
+                  TextFieldSearch(
+                    callback: (text) {},
+                    placeHolder: "Buscar produto",
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
                   Expanded(
                     child: ListView(
                       children: productController.products
@@ -50,7 +57,9 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   ButtonPrimary(
                     buttonText: "Adicionar ao carrinho",
-                    callback: () {},
+                    callback: () {
+                      productController.goToCart();
+                    },
                     isLoading: false,
                     fontSize: 16,
                   )

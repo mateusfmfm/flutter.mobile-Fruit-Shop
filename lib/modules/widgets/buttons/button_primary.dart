@@ -31,9 +31,9 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           )),
           backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
             if (states.contains(MaterialState.disabled)) {
-              return Colors.pinkAccent.withOpacity(0.32); // Disabled color
+              return Colors.pink.withOpacity(0.32); // Disabled color
             }
-            return Colors.pinkAccent; // Regular color
+            return Colors.pink; // Regular color
           }),
         ),
         onPressed: widget.callback,

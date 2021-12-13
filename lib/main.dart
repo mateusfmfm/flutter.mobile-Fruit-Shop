@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
           getPages: AppPages.pages,
           initialRoute: Routes.INITIAL,
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            colorScheme: ThemeData().colorScheme.copyWith(
+                  secondary: Colors.pink,
+                ),
           ),
           home: const LoginPage(),
         ),

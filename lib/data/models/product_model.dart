@@ -16,7 +16,6 @@ class ProductModel{
   ProductModel({this.imageUrl, this.description, this.name, this.price});
 
   ProductModel.fromMap(Map<String, dynamic> data){
-    // id = data[ID];
     imageUrl = data[IMAGEURL];
     description = data[DESCRIPTION];
     name = data[NAME];
