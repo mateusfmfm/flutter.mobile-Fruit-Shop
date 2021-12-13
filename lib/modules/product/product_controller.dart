@@ -4,6 +4,7 @@ import 'package:fruitshop/modules/home/home_controller.dart';
 import 'package:fruitshop/modules/widgets/dialogs/warning_dialog.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:get/get.dart';
+import 'package:diacritic/diacritic.dart';
 
 class ProductController extends GetxController {
   final _isLoading = false.obs;
@@ -20,10 +21,30 @@ class ProductController extends GetxController {
 
   RxList<ProductModel> products = RxList<ProductModel>([]);
 
+  List<ProductModel> productList = [];
+
+  final textFilter = "".obs;
+  final productListFiltered = <ProductModel>[].obs;
+
   @override
   onReady() {
     super.onReady();
     products.bindStream(getAllProducts());
+  }
+
+  onInit() {
+    super.onInit();
+    // Sistema de filtragrem
+    ever(textFilter, listFilter);
+    getAllProducts();
+  }
+
+  listFilter(value) {
+    productListFiltered.value = products
+        .where((productItem) => (removeDiacritics(productItem.name!))
+            .toLowerCase()
+            .contains(value.toLowerCase()))
+        .toList();
   }
 
   Stream<List<ProductModel>> getAllProducts() => FirebaseFirestore.instance

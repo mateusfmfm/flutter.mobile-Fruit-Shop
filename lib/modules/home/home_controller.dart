@@ -24,4 +24,8 @@ class HomeController extends GetxController {
   goToShop() {
     Get.toNamed(RoutesProduct.PRODUCT_LIST);
   }
+
+  goToOrders() {
+    Get.toNamed(RoutesOrder.ORDER_LIST);
+  }
 }

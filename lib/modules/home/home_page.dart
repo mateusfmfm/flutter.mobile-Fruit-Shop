@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                         () => _controller.goToShop()),
                     Spacer(),
                     optionContainer("Pedidos", "assets/report.svg",
-                        () => _controller.goToShop()),
+                        () => _controller.goToOrders()),
                   ],
                 ),
                 ButtonPrimary(

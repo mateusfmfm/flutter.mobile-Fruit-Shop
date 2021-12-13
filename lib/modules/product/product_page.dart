@@ -1,3 +1,4 @@
+import 'package:diacritic/diacritic.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fruitshop/data/models/product_model.dart';
@@ -38,7 +39,9 @@ class _ProductPageState extends State<ProductPage> {
             : Column(
                 children: [
                   TextFieldSearch(
-                    callback: (text) {},
+                    callback: (text) {
+                      _controller.textFilter.value = (removeDiacritics(text));
+                    },
                     placeHolder: "Buscar produto",
                   ),
                   SizedBox(
@@ -46,7 +49,7 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   Expanded(
                     child: ListView(
-                      children: productController.products
+                      children: productController.productListFiltered
                           .map((ProductModel product) {
                         return productContainer(product);
                       }).toList(),
