@@ -30,12 +30,6 @@ class _RegularScaffoldState extends State<RegularScaffold> {
           style: DosisStyle.regular(context)
               .merge(TextStyle(fontSize: 18, color: Colors.white)),
         ),
-        actions: [
-          Icon(Icons.shopping_cart, color: Colors.white),
-          SizedBox(
-            width: 8,
-          )
-        ],
       ),
       body: Padding(padding: EdgeInsets.all(25), child: widget.widget,
       ),

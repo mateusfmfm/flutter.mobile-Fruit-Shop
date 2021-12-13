@@ -1,23 +1,20 @@
-// class OrderModel{
-//   // static const ID = "id";
-//   static const IMAGEURL = "imageUrl";
-//   static const DESCRIPTION = "description";
-//   static const NAME = "name";
-//   static const PRICE = "price";
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-//   //  String? id;
-//    String? imageUrl;
-//    String? description;
-//    String? name;
-//    int? finalValue;
+class OrderModel{
+  static const ORDER_VALUE = "orderValue";
+  static const CREATED_AT = "createdAt";
+  static const ORDER_PRODUCTS = "orderProducts";
 
-//   OrderModel({this.imageUrl, this.description, this.name, this.price});
+   int? orderValue;
+   Timestamp? createdAt;
+   List<dynamic>? orderProducts;
 
-//   OrderModel.fromMap(Map<String, dynamic> data){
-//     imageUrl = data[IMAGEURL];
-//     description = data[DESCRIPTION];
-//     name = data[NAME];
-//     price = data[PRICE];
-//   }
+  OrderModel({this.orderValue, this.createdAt, this.orderProducts,});
 
-// }
+  OrderModel.fromMap(Map<String, dynamic> data){
+    orderValue = data[ORDER_VALUE];
+    createdAt = data[CREATED_AT];
+    orderProducts = data[ORDER_PRODUCTS];
+  }
+
+}

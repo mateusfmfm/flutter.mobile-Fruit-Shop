@@ -18,4 +18,5 @@ class RoutesCart {
 
 class RoutesOrder {
   static const ORDER_RESUM = '/orderResum';
+  static const ORDER_LIST = '/orderList';
 }

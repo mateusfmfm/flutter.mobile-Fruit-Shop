@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fruitshop/data/models/product_model.dart';
+import 'package:fruitshop/modules/home/home_controller.dart';
+import 'package:fruitshop/modules/widgets/dialogs/warning_dialog.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +50,12 @@ class ProductController extends GetxController {
     if (canContinue) {
       Get.toNamed(RoutesCart.CART)!.then((value) => canContinue = false);
     } else {
-      print('Adicione pelo menos um produto');
+      Get.dialog(WarningDialog(
+        title: "Erro ao adicionar produto",
+        warningDescription: 'Adicione pelo menos um produto!',
+        buttonText: 'Voltar',
+        buttonCallback: () => Get.back(),
+      ));
     }
   }
 }
