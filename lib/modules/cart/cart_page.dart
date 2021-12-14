@@ -8,7 +8,7 @@ import 'package:fruitshop/routes/app_pages.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
 
@@ -45,10 +45,10 @@ class _CartPageState extends State<CartPage> {
               children: [
                 Text("Valor total: ",
                     style: DosisStyle.regular(context).merge(
-                        TextStyle(fontSize: 16, color: Colors.grey[800]))),
+                        TextStyle(fontSize: 16.sp, color: Colors.grey[800]))),
                 Text("R\$" + moneyFormat.format(productController.finalValue),
                     style: DosisStyle.bold(context)
-                        .merge(TextStyle(fontSize: 16, color: Colors.red))),
+                        .merge(TextStyle(fontSize: 16.sp, color: Colors.red))),
               ],
             ),
             SizedBox(height: 16),
@@ -66,7 +66,7 @@ class _CartPageState extends State<CartPage> {
               },
               child: Text("Editar",
                   style: DosisStyle.bold(context).merge(TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.grey[800],
                     decoration: TextDecoration.underline,
                   ))),
@@ -102,7 +102,7 @@ class _CartPageState extends State<CartPage> {
                                     "x " +
                                     product.name!,
                                 style: DosisStyle.bold(context).merge(TextStyle(
-                                    fontSize: 16, color: Colors.grey[800]))),
+                                    fontSize: 16.sp, color: Colors.grey[800]))),
                             SizedBox(height: 8),
                             Row(
                               children: [
@@ -110,14 +110,14 @@ class _CartPageState extends State<CartPage> {
                                 Text("Valor final: ",
                                     style: DosisStyle.regular(context).merge(
                                         TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 14.sp,
                                             color: Colors.grey[800]))),
                                 Text(
                                     "R\$" +
                                         moneyFormat.format(product.finalValue),
                                     style: DosisStyle.regular(context).merge(
                                         TextStyle(
-                                            fontSize: 14, color: Colors.red))),
+                                            fontSize: 14.sp, color: Colors.red))),
                               ],
                             )
                           ],

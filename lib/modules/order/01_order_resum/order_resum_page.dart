@@ -9,7 +9,7 @@ import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:screenshot/screenshot.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class OrderResumPage extends StatefulWidget {
   const OrderResumPage({Key? key}) : super(key: key);
 
@@ -33,10 +33,10 @@ class _OrderResumPageState extends State<OrderResumPage> {
             children: [
               Text("Valor final da compra:",
                   style: DosisStyle.regular(context)
-                      .merge(TextStyle(fontSize: 16, color: Colors.grey[800]))),
+                      .merge(TextStyle(fontSize: 16.sp, color: Colors.grey[800]))),
               Text("R\$" + moneyFormat.format(productController.finalValue),
                   style: DosisStyle.bold(context)
-                      .merge(TextStyle(fontSize: 16, color: Colors.pink))),
+                      .merge(TextStyle(fontSize: 16.sp, color: Colors.pink))),
             ],
           ),
           SizedBox(height: 16),
@@ -68,7 +68,7 @@ class _OrderResumPageState extends State<OrderResumPage> {
             },
             child: Text("Exportar para PDF",
                 style: DosisStyle.bold(context).merge(TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: Colors.grey[800],
                   decoration: TextDecoration.underline,
                 ))),
@@ -91,7 +91,7 @@ class _OrderResumPageState extends State<OrderResumPage> {
                   children: [
                     Text(product.name!,
                         style: DosisStyle.bold(context).merge(
-                            TextStyle(fontSize: 16, color: Colors.grey[800]))),
+                            TextStyle(fontSize: 16.sp, color: Colors.grey[800]))),
                     Spacer(),
                     Expanded(
                         child: Column(
@@ -99,17 +99,17 @@ class _OrderResumPageState extends State<OrderResumPage> {
                       children: [
                         Text("Quantidade: " + product.counter.toString(),
                             style: DosisStyle.regular(context).merge(TextStyle(
-                                fontSize: 14, color: Colors.grey[800]))),
+                                fontSize: 14.sp, color: Colors.grey[800]))),
                         Text(
                             "Valor unitário: R\$" +
                                 moneyFormat.format(product.price),
                             style: DosisStyle.regular(context).merge(TextStyle(
-                                fontSize: 14, color: Colors.grey[800]))),
+                                fontSize: 14.sp, color: Colors.grey[800]))),
                         Text(
                             "Valor total: R\$" +
                                 moneyFormat.format(product.finalValue),
                             style: DosisStyle.regular(context).merge(TextStyle(
-                                fontSize: 14, color: Colors.grey[800]))),
+                                fontSize: 14.sp, color: Colors.grey[800]))),
                       ],
                     )),
                   ],

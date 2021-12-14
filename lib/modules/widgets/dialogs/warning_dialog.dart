@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruitshop/modules/widgets/buttons/button_primary.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WarningDialog extends StatefulWidget {
   const WarningDialog(
       {this.title, this.warningDescription, this.buttonText, this.buttonCallback, Key? key})
@@ -39,7 +39,7 @@ class _WarningDialogState extends State<WarningDialog> {
                 textAlign: TextAlign.center,
                 style: DosisStyle.bold(context).merge(
                   TextStyle(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     color: Colors.pink,
                   ),
                 ),
@@ -53,7 +53,7 @@ class _WarningDialogState extends State<WarningDialog> {
                 textAlign: TextAlign.center,
                 style: DosisStyle.regular(context).merge(
                   TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: Colors.grey[800],
                   ),
                 ),
@@ -61,11 +61,11 @@ class _WarningDialogState extends State<WarningDialog> {
             ),
             SizedBox(height: 32),
             Container(
-              height: 40,
+              height: 40.h,
               width: Get.width,
               margin: EdgeInsets.only(right: 4),
               child: ButtonPrimary(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   buttonText: widget.buttonText,
                   callback: widget.buttonCallback,
                   isLoading: false),

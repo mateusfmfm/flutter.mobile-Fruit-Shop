@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitshop/modules/login/login_controller.dart';
 import 'package:fruitshop/modules/widgets/buttons/button_primary.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
                   SvgPicture.asset(
                     "assets/shop_logo.svg",
                     color: Colors.white,
-                    height: 200,
+                    height: 200.h,
                   ),
                   SizedBox(height: 32),
                   const Text(
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 32),
                   Container(
-                    width: 200,
+                    width: 200.w,
                     child: ButtonPrimary(
                       buttonText: "Continuar",
                       callback: () {

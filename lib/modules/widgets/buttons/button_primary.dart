@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ButtonPrimary extends StatefulWidget {
   final double? fontSize;
   final String? buttonText;
@@ -59,7 +59,7 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           widget.buttonText!,
           maxLines: 1,
           style: DosisStyle.regular(context).merge(TextStyle(
-              fontSize: widget.fontSize == null ? 16 : widget.fontSize)),
+              fontSize: widget.fontSize == null ? 16.sp : widget.fontSize)),
           textAlign: TextAlign.center,
         ),
       );

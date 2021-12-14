@@ -10,6 +10,7 @@ import 'package:fruitshop/routes/app_pages.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -95,7 +96,7 @@ class _ProductPageState extends State<ProductPage> {
                 Container(
                   child: Image.network(
                     product.imageUrl!,
-                    width: 100,
+                    width: 100.w,
                   ),
                 ),
                 SizedBox(width: 8),
@@ -105,17 +106,17 @@ class _ProductPageState extends State<ProductPage> {
                     children: [
                       Text(product.name!,
                           style: DosisStyle.bold(context).merge(TextStyle(
-                              fontSize: 16, color: Colors.grey[800]))),
+                              fontSize: 16.sp, color: Colors.grey[800]))),
                       SizedBox(height: 8),
                       Text(product.description!,
                           style: DosisStyle.regular(context).merge(TextStyle(
-                              fontSize: 14, color: Colors.grey[800]))),
+                              fontSize: 14.sp, color: Colors.grey[800]))),
                       SizedBox(height: 8),
                       Row(
                         children: [
                           Text("R\$" + moneyFormat.format(product.price),
                               style: DosisStyle.bold(context).merge(
-                                  TextStyle(fontSize: 16, color: Colors.red))),
+                                  TextStyle(fontSize: 16.sp, color: Colors.red))),
                           Spacer(),
                           GestureDetector(
                             child: Icon(Icons.remove_circle_rounded),
@@ -134,7 +135,7 @@ class _ProductPageState extends State<ProductPage> {
                                 const EdgeInsets.symmetric(horizontal: 12.0),
                             child: Text(product.counter.toString(),
                                 style: DosisStyle.bold(context).merge(TextStyle(
-                                    fontSize: 16, color: Colors.grey[800]))),
+                                    fontSize: 16.sp, color: Colors.grey[800]))),
                           ),
                           GestureDetector(
                             child: Icon(Icons.add_circle_rounded),
