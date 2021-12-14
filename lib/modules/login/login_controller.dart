@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruitshop/modules/home/home_page.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:get/get.dart';
@@ -7,15 +8,15 @@ class LoginController extends GetxController {
   set isLoading(value) => _isLoading.value = value;
   get isLoading => _isLoading.value;
 
-  handleLogin() {
+  Future<void> handleLogin() async {
     isLoading = true;
-    Future.delayed(
-      Duration(seconds: 3),
-      () {
-        isLoading = false;
-        Get.offAndToNamed(RoutesHome.HOME);
-        print("iuiuiui");
-      },
-    );
+    try {
+      await FirebaseAuth.instance.signInAnonymously();
+      isLoading = false;
+      Get.offAndToNamed(RoutesHome.HOME);
+    } catch (e) {
+      isLoading = false;
+      print(e);
+    }
   }
 }

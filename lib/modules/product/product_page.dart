@@ -9,6 +9,7 @@ import 'package:fruitshop/modules/widgets/text_fields/text_field_search.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -78,6 +79,7 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   Widget productContainer(ProductModel product) {
+    final moneyFormat = NumberFormat("#,##0.00", "pt_BR");
     return Column(
       children: [
         Container(
@@ -111,7 +113,7 @@ class _ProductPageState extends State<ProductPage> {
                       SizedBox(height: 8),
                       Row(
                         children: [
-                          Text("R\$${product.price.toString()},00",
+                          Text("R\$" + moneyFormat.format(product.price),
                               style: DosisStyle.bold(context).merge(
                                   TextStyle(fontSize: 16, color: Colors.red))),
                           Spacer(),

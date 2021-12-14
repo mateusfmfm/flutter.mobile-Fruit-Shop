@@ -19,32 +19,25 @@ class _HomePageState extends State<HomePage> {
   HomeController homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
-    return GetX<HomeController>(
-      builder: (_controller) => WillPopScope(
-        onWillPop: () async {
-          return false;
-        },
-        child: RegularScaffold(
-            title: "Loja de Frutas",
-            widget: Column(
-              children: [
-                Row(
-                  children: [
-                    optionContainer("Loja", "assets/shopping_cart.svg",
-                        () => _controller.goToShop()),
-                    Spacer(),
-                    optionContainer("Pedidos", "assets/report.svg",
-                        () => _controller.goToOrders()),
-                  ],
-                ),
-                ButtonPrimary(
-                  buttonText: 'Loja',
-                  callback: () {},
-                  isLoading: _controller.isLoading,
-                )
-              ],
-            )),
-      ),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: RegularScaffold(
+          title: "Loja de Frutas",
+          widget: Column(
+            children: [
+              Row(
+                children: [
+                  optionContainer("Loja", "assets/shopping_cart.svg",
+                      () => homeController.goToShop()),
+                  Spacer(),
+                  optionContainer("Sair", "assets/logout.svg",
+                      () => homeController.signOut()),
+                ],
+              ),
+            ],
+          )),
     );
   }
 

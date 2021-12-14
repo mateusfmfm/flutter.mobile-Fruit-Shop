@@ -7,6 +7,7 @@ import 'package:fruitshop/modules/widgets/scaffolds/regular_scaffold.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _CartPageState extends State<CartPage> {
   CartController cartController = Get.put(CartController());
   @override
   Widget build(BuildContext context) {
-    ProductModel? product;
+    final moneyFormat = NumberFormat("#,##0.00", "pt_BR");
     return WillPopScope(
       onWillPop: () {
         productController.finalValue = 0;
@@ -45,7 +46,7 @@ class _CartPageState extends State<CartPage> {
                 Text("Valor total: ",
                     style: DosisStyle.regular(context).merge(
                         TextStyle(fontSize: 16, color: Colors.grey[800]))),
-                Text("R\$${productController.finalValue.toString()},00",
+                Text("R\$" + moneyFormat.format(productController.finalValue),
                     style: DosisStyle.bold(context)
                         .merge(TextStyle(fontSize: 16, color: Colors.red))),
               ],
@@ -77,6 +78,7 @@ class _CartPageState extends State<CartPage> {
   }
 
   Widget productDataInCart(ProductModel product) {
+    final moneyFormat = NumberFormat("#,##0.00", "pt_BR");
     return product.counter == 0
         ? Container()
         : Column(
@@ -110,7 +112,9 @@ class _CartPageState extends State<CartPage> {
                                         TextStyle(
                                             fontSize: 14,
                                             color: Colors.grey[800]))),
-                                Text("R\$${product.finalValue.toString()},00",
+                                Text(
+                                    "R\$" +
+                                        moneyFormat.format(product.finalValue),
                                     style: DosisStyle.regular(context).merge(
                                         TextStyle(
                                             fontSize: 14, color: Colors.red))),

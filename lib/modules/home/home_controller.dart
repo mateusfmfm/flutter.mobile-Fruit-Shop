@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruitshop/modules/order/01_order_resum/order_resum_controller.dart';
 import 'package:fruitshop/modules/product/product_controller.dart';
 import 'package:fruitshop/routes/app_pages.dart';
@@ -25,7 +26,12 @@ class HomeController extends GetxController {
     Get.toNamed(RoutesProduct.PRODUCT_LIST);
   }
 
-  goToOrders() {
-    Get.toNamed(RoutesOrder.ORDER_LIST);
+  Future<void> signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAndToNamed(Routes.INITIAL);
+    } catch (e) {
+      print(e); // TODO: show dialog with error
+    }
   }
 }

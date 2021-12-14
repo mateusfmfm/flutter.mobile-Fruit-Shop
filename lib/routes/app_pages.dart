@@ -2,7 +2,6 @@ import 'package:fruitshop/modules/cart/cart_page.dart';
 import 'package:fruitshop/modules/home/home_page.dart';
 import 'package:fruitshop/modules/login/login_page.dart';
 import 'package:fruitshop/modules/order/01_order_resum/order_resum_page.dart';
-import 'package:fruitshop/modules/order/02_order_list/order_list_page.dart';
 import 'package:fruitshop/modules/product/product_page.dart';
 import 'package:get/get.dart';
 part './app_routes.dart';
@@ -36,10 +35,6 @@ class AppPages {
     GetPage(
       name: RoutesOrder.ORDER_RESUM,
       page: () => OrderResumPage(), 
-    ),
-    GetPage(
-      name: RoutesOrder.ORDER_LIST,
-      page: () => OrderListPage(), 
     ),
 
     

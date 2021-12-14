@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fruitshop/data/models/product_model.dart';
+import 'package:fruitshop/modules/order/01_order_resum/order_resum_controller.dart';
 import 'package:fruitshop/modules/product/product_controller.dart';
 import 'package:fruitshop/modules/widgets/buttons/button_primary.dart';
 import 'package:fruitshop/modules/widgets/scaffolds/regular_scaffold.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:fruitshop/theme/dosis_style.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:screenshot/screenshot.dart';
 
 class OrderResumPage extends StatefulWidget {
   const OrderResumPage({Key? key}) : super(key: key);
@@ -15,25 +18,40 @@ class OrderResumPage extends StatefulWidget {
 }
 
 class _OrderResumPageState extends State<OrderResumPage> {
+  OrderResumController orderResumController = Get.put(OrderResumController());
   ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
+    final moneyFormat = NumberFormat("#,##0.00", "pt_BR");
     return RegularScaffold(
       showBackButton: false,
       title: 'Resumo do pedido',
       widget: Column(
         children: [
-          Text(
-              "Abaixo está o resumo da sua compra! Para baixar a versão PDF, clique no botão abaixo da tela.",
-              style: DosisStyle.regular(context)
-                  .merge(TextStyle(fontSize: 16, color: Colors.grey[800]))),
+          Row(
+            children: [
+              Text("Valor final da compra:",
+                  style: DosisStyle.regular(context)
+                      .merge(TextStyle(fontSize: 16, color: Colors.grey[800]))),
+              Text("R\$" + moneyFormat.format(productController.finalValue),
+                  style: DosisStyle.bold(context)
+                      .merge(TextStyle(fontSize: 16, color: Colors.pink))),
+            ],
+          ),
           SizedBox(height: 16),
           Expanded(
-            child: ListView(
-              children: productController.products.map((ProductModel product) {
-                return orderData(product);
-              }).toList(),
+            child: Screenshot(
+              controller: orderResumController.screenshotController,
+              child: Container(
+                color: Colors.white,
+                child: ListView(
+                  children: productController.products
+                      .map((ProductModel product) {
+                    return orderData(product);
+                  }).toList(),
+                ),
+              ),
             ),
           ),
           ButtonPrimary(
@@ -42,13 +60,26 @@ class _OrderResumPageState extends State<OrderResumPage> {
                 Get.delete<ProductController>();
                 Get.until(ModalRoute.withName(RoutesHome.HOME));
               },
-              isLoading: false)
+              isLoading: false),
+          SizedBox(height: 8),
+          GestureDetector(
+            onTap: () {
+              orderResumController.takeScreenshot();
+            },
+            child: Text("Exportar para PDF",
+                style: DosisStyle.bold(context).merge(TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[800],
+                  decoration: TextDecoration.underline,
+                ))),
+          ),
         ],
       ),
     );
   }
 
   Widget orderData(ProductModel product) {
+    final moneyFormat = NumberFormat("#,##0.00", "pt_BR");
     return product.counter == 0
         ? Container()
         : Column(
@@ -69,10 +100,14 @@ class _OrderResumPageState extends State<OrderResumPage> {
                         Text("Quantidade: " + product.counter.toString(),
                             style: DosisStyle.regular(context).merge(TextStyle(
                                 fontSize: 14, color: Colors.grey[800]))),
-                        Text("Valor unitário: " + product.price.toString(),
+                        Text(
+                            "Valor unitário: R\$" +
+                                moneyFormat.format(product.price),
                             style: DosisStyle.regular(context).merge(TextStyle(
                                 fontSize: 14, color: Colors.grey[800]))),
-                        Text("Valor total: " + product.finalValue.toString(),
+                        Text(
+                            "Valor total: R\$" +
+                                moneyFormat.format(product.finalValue),
                             style: DosisStyle.regular(context).merge(TextStyle(
                                 fontSize: 14, color: Colors.grey[800]))),
                       ],
