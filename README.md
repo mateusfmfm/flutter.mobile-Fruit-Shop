@@ -1,6 +1,8 @@
 # fruitshop
 
-A new Flutter project.
+Projeto básico desenvolvido por Mateus Félix utilizando GetX como gerenciador de estado, padrão MVC e simples login/backend com Firebase. O mesmo está preparado para receber estruturação White Label, também disponibilizado na página principal desse GitHub.
+
+O mesmo possui lista de produtos, sistema de filtragem/busca e lançamento do pedido para PDF.
 
 ## Getting Started
 

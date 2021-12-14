@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruitshop/data/models/product_model.dart';
-import 'package:fruitshop/modules/order/01_order_resum/order_resum_controller.dart';
+import 'package:fruitshop/modules/order/order_resum_controller.dart';
 import 'package:fruitshop/modules/product/product_controller.dart';
 import 'package:fruitshop/modules/widgets/buttons/button_primary.dart';
 import 'package:fruitshop/modules/widgets/scaffolds/regular_scaffold.dart';

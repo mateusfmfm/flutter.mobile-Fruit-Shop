@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fruitshop/modules/order/01_order_resum/order_resum_controller.dart';
+import 'package:fruitshop/modules/order/order_resum_controller.dart';
 import 'package:fruitshop/modules/product/product_controller.dart';
 import 'package:fruitshop/routes/app_pages.dart';
 import 'package:get/get.dart';
