@@ -25,7 +25,7 @@ class _ProductPageState extends State<ProductPage> {
       builder: (_controller) => RegularScaffold(
         showBackButton: false,
         title: "Lista de produtos",
-        widget: productController.isLoading
+        widget: _controller.isLoading
             ? const Center(
                 child: SizedBox(
                   width: 50,
@@ -40,6 +40,7 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   TextFieldSearch(
                     callback: (text) {
+                      _controller.isSearched = true;
                       _controller.textFilter.value = (removeDiacritics(text));
                     },
                     placeHolder: "Buscar produto",
@@ -49,10 +50,14 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   Expanded(
                     child: ListView(
-                      children: productController.productListFiltered
-                          .map((ProductModel product) {
-                        return productContainer(product);
-                      }).toList(),
+                      children: !_controller.isSearched
+                          ? _controller.products.map((ProductModel product) {
+                              return productContainer(product);
+                            }).toList()
+                          : _controller.productListFiltered
+                              .map((ProductModel product) {
+                              return productContainer(product);
+                            }).toList(),
                     ),
                   ),
                   SizedBox(
@@ -61,7 +66,7 @@ class _ProductPageState extends State<ProductPage> {
                   ButtonPrimary(
                     buttonText: "Adicionar ao carrinho",
                     callback: () {
-                      productController.goToCart();
+                      _controller.goToCart();
                     },
                     isLoading: false,
                     fontSize: 16,

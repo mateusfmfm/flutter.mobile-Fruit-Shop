@@ -11,6 +11,10 @@ class ProductController extends GetxController {
   set isLoading(value) => _isLoading.value = value;
   get isLoading => _isLoading.value;
 
+  final _isSearched = false.obs;
+  set isSearched(value) => _isSearched.value = value;
+  get isSearched => _isSearched.value;
+
   final _canContinue = false.obs;
   set canContinue(value) => _canContinue.value = value;
   get canContinue => _canContinue.value;
