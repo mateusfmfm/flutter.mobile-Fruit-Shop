@@ -4,6 +4,7 @@ import 'package:fruitshop/data/models/order_model.dart';
 import 'package:fruitshop/data/utils/pdf_downloader.dart';
 import 'package:fruitshop/modules/widgets/dialogs/warning_dialog.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
 class OrderResumController extends GetxController {
@@ -35,15 +36,17 @@ class OrderResumController extends GetxController {
     print(document.toString());
   }
 
-  takeScreenshot() {
-    print("oiii");
-    PdfDownloader()
-        .takeScreenshot(screenshotController, "orderResum");
-    Get.dialog(WarningDialog(
-      title: "PDF baixado com sucesso.",
-      warningDescription: "Seu PDF foi transferido para a pasta de downloads do seu dispositivo.",
-      buttonText: "Ok, entendi.",
-      buttonCallback: () => Get.back(),
-    ));
+  takeScreenshot() async {
+    PdfDownloader().takeScreenshot(screenshotController, "orderResum");
+
+    if (await Permission.storage.isGranted) {
+      Get.dialog(WarningDialog(
+        title: "PDF baixado com sucesso.",
+        warningDescription:
+            "Seu PDF foi transferido para a pasta de downloads do seu dispositivo.",
+        buttonText: "Ok, entendi.",
+        buttonCallback: () => Get.back(),
+      ));
+    }
   }
 }
